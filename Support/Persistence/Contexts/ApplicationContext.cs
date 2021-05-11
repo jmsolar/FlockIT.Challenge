@@ -3,9 +3,9 @@ using Support.Domain;
 
 namespace Support.Persistence.Contexts
 {
-    public class AppContext : DbContext
+    public class ApplicationContext : DbContext
     {
-        public AppContext(DbContextOptions<AppContext> options) : base(options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
             
         }
