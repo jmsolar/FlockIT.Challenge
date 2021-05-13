@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Support.Domain;
+using System;
 
 namespace Support.Persistence.Seeds
 {
@@ -10,11 +11,11 @@ namespace Support.Persistence.Seeds
         
         private void Seed() {
             this._builder.HasData(
-                new User() { username = "Juan", email = "juan@juan.com" },
-                new User() { username = "Lucrecia", email = "lucrecia@lucrecia.com" },
-                new User() { username = "Maria", email = "maria@maria.com" },
-                new User() { username = "Esteban", email = "esteban@esteban.com" },
-                new User() { username = "Pilar", email = "pilar@pilar.com" }
+                new User() { Id = Guid.NewGuid(), username = "Juan", email = "juan@juan.com" },
+                new User() { Id = Guid.NewGuid(), username = "Lucrecia", email = "lucrecia@lucrecia.com" },
+                new User() { Id = Guid.NewGuid(), username = "Maria", email = "maria@maria.com" },
+                new User() { Id = Guid.NewGuid(), username = "Esteban", email = "esteban@esteban.com" },
+                new User() { Id = Guid.NewGuid(), username = "Pilar", email = "pilar@pilar.com" }
             );
         }
 

@@ -3,9 +3,9 @@ using Support.DTOs;
 using Support.Filters;
 using System.Threading.Tasks;
 
-namespace Support.Persistence.Repositories.Interfaces
+namespace TechnicalAPI.Services.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserCustomServices
     {
         Task<ApiResponse<User>> GetUserByFilter(UserFilter filter);
     }

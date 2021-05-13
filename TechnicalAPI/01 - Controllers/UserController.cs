@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Support.DTOs;
+using Support.Filters;
+using System;
 using System.Threading.Tasks;
-using TechnicalAPI.Business;
+using TechnicalAPI.Services.Interfaces;
 
 namespace TechnicalAPI.Controllers
 {
@@ -9,16 +11,30 @@ namespace TechnicalAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private UserBusiness _userBusiness;
-        public UserController(UserBusiness userBusiness)
-        {
-            _userBusiness = userBusiness;
+        private IUserCustomServices _userService;
+
+        public UserController(IUserCustomServices userService) {
+            _userService = userService;
         }
 
         [HttpPost("authenticate")]
-        public IActionResult Login(LoginRequest request) {
-            var result = _userBusiness.Authenticate(request);
-            return Ok();
+        public async Task<IActionResult> Login(LoginRequest request) {
+            try
+            {
+                var userFilter = new UserFilter() { email = request.email, username = request.username };
+
+                var result = await _userService.GetUserByFilter(userFilter);
+
+                if (result.Success)
+                    return Ok(result);
+                else
+                    return NotFound(result.Errors);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

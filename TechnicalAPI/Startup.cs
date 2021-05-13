@@ -20,7 +20,10 @@ namespace TechnicalAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPersistenceInfraestructure(Configuration);
+            services.AddCustomServices();
             services.AddControllers();
+            services.AddSwaggerDocumentation();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +35,12 @@ namespace TechnicalAPI
             }
 
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Flock IT - API");
+            });
 
             app.UseAuthorization();
 
