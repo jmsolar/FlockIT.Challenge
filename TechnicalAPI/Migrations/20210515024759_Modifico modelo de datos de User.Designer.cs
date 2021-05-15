@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Support.Persistence.Contexts;
 
 namespace TechnicalAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210515024759_Modifico modelo de datos de User")]
+    partial class ModificomodelodedatosdeUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,31 +40,31 @@ namespace TechnicalAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("62a8e72f-a855-425d-90d8-138f0944023f"),
+                            Id = new Guid("1e18b90a-2ba2-4f96-87b0-5cd3cd1c3e93"),
                             password = "juan123",
                             username = "Juan"
                         },
                         new
                         {
-                            Id = new Guid("b0fab24b-5ad0-4d68-95e3-30880a0dcbb9"),
+                            Id = new Guid("2b278e05-4684-4e48-9eee-d493f1fcdf5c"),
                             password = "lucrecia123",
                             username = "Lucrecia"
                         },
                         new
                         {
-                            Id = new Guid("a701427a-169e-43de-a5ca-54f5a15a7166"),
+                            Id = new Guid("34cc03fa-879c-4cba-8354-8e6741ef6126"),
                             password = "maria123",
                             username = "Maria"
                         },
                         new
                         {
-                            Id = new Guid("0bf5c6b6-9dbb-4efd-bfd7-061aefe9d4b6"),
+                            Id = new Guid("6fc43413-a00e-4ea0-b4de-50c29342d672"),
                             password = "esteban123",
                             username = "Esteban"
                         },
                         new
                         {
-                            Id = new Guid("e43b81f9-c273-49dc-b330-b72a2c28fd89"),
+                            Id = new Guid("bd1f5b2f-2413-48b5-bd4f-166a716d7bf2"),
                             password = "pilar123",
                             username = "Pilar"
                         });

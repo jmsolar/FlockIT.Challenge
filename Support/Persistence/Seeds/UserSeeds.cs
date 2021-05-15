@@ -11,11 +11,11 @@ namespace Support.Persistence.Seeds
         
         private void Seed() {
             this._builder.HasData(
-                new User() { Id = Guid.NewGuid(), username = "Juan", email = "juan@juan.com" },
-                new User() { Id = Guid.NewGuid(), username = "Lucrecia", email = "lucrecia@lucrecia.com" },
-                new User() { Id = Guid.NewGuid(), username = "Maria", email = "maria@maria.com" },
-                new User() { Id = Guid.NewGuid(), username = "Esteban", email = "esteban@esteban.com" },
-                new User() { Id = Guid.NewGuid(), username = "Pilar", email = "pilar@pilar.com" }
+                new User() { Id = Guid.NewGuid(), username = "Juan", password = "juan123" },
+                new User() { Id = Guid.NewGuid(), username = "Lucrecia", password = "lucrecia123" },
+                new User() { Id = Guid.NewGuid(), username = "Maria", password = "maria123" },
+                new User() { Id = Guid.NewGuid(), username = "Esteban", password = "esteban123" },
+                new User() { Id = Guid.NewGuid(), username = "Pilar", password = "pilar123" }
             );
         }
 

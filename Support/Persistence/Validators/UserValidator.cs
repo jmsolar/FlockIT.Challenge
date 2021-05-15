@@ -7,10 +7,9 @@ namespace Support.Persistence.Validators
     {
         public UserValidator()
         {
-            RuleFor(u => u.username).NotNull().WithMessage("Username is required");
+            RuleFor(u => u.username).NotNull();
 
-            RuleFor(u => u.email).NotNull().WithMessage("Email is required");
-            RuleFor(u => u.email).EmailAddress().WithMessage("Email format invalid");
+            RuleFor(u => u.password).NotNull();
         }
     }
 }

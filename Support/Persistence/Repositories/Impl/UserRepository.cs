@@ -24,21 +24,18 @@ namespace Support.Persistence.Repositories.Impl
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async Task<ApiResponse<User>> GetUserByFilter(UserFilter filter) 
+        public async Task<ApiResponse<UserResponse>> GetUserByFilter(UserFilter filter) 
         {
-            var result = new User
+            var result = new UserResponse
             {
                 username = filter.username,
-                email = filter.email
             };
 
-            var response = new ApiResponse<User>() { Data =  result, Success = false, Errors = new List<string>() };
+            var response = new ApiResponse<UserResponse>() { Data = result, Success = false, Errors = new List<string>() };
 
-            var resultQuery = await _users.FromSqlRaw<User>("GetUserByFilter {0}, {1}", filter.username, filter.email).ToListAsync();
+            var resultQuery = await _users.FromSqlRaw<User>("GetUserByFilter {0}, {1}", filter.username, filter.password).ToListAsync();
             if (resultQuery.Any())
             {
-                result = resultQuery.First();
-                response.Data.Id = result.Id;
                 response.Success = true;
             }
             else {

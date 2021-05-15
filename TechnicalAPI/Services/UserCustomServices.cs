@@ -1,5 +1,4 @@
-﻿using Support.Domain;
-using Support.DTOs;
+﻿using Support.DTOs;
 using Support.Filters;
 using Support.Persistence.Repositories.Interfaces;
 using System.Threading.Tasks;
@@ -16,7 +15,7 @@ namespace TechnicalAPI.Services
             _userRepository = userRepository;
         }
 
-        public async Task<ApiResponse<User>> GetUserByFilter(UserFilter filter) 
+        public async Task<ApiResponse<UserResponse>> GetUserByFilter(UserFilter filter) 
         {
             return await _userRepository.GetUserByFilter(filter);
         }

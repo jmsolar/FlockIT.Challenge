@@ -20,9 +20,5 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Extensions\" />
-  </ItemGroup>
-
 
 </Project>

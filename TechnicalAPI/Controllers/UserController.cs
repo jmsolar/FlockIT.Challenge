@@ -24,7 +24,7 @@ namespace TechnicalAPI.Controllers
             {
                 if (request == null) return BadRequest();
 
-                var userFilter = new UserFilter() { email = request.email, username = request.username };
+                var userFilter = new UserFilter() { username = request.username, password = request.password };
 
                 var result = await _userService.GetUserByFilter(userFilter);
 
@@ -36,7 +36,7 @@ namespace TechnicalAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error on authentication");
+                return StatusCode(StatusCodes.Status500InternalServerError, string.Concat("Error on authentication. ", ex.Message));
             }
         }
     }
