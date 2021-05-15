@@ -1,15 +1,30 @@
 ﻿namespace Support.Domain
 {
-    public class Centroide { 
-        public string latitude { get; set; }
-
-        public string length { get; set; }
-    }
-
-    public class State : BaseEntity
+    public class Country
     {
-        public string name { get; set; }
-
-        public Centroide centroide { get; set; }
+        public int cantidad { get; set; }
+        public int inicio { get; set; }
+        public Parametros parametros { get; set; }
+        public Provincia[] provincias { get; set; }
+        public int total { get; set; }
     }
+
+    public class Parametros
+    {
+        public string nombre { get; set; }
+    }
+
+    public class Provincia
+    {
+        public Centroide centroide { get; set; }
+        public string id { get; set; }
+        public string nombre { get; set; }
+    }
+
+    public class Centroide
+    {
+        public float lat { get; set; }
+        public float lon { get; set; }
+    }
+
 }

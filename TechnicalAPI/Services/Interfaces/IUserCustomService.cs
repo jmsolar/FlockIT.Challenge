@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TechnicalAPI.Services.Interfaces
 {
-    public interface IUserCustomServices
+    public interface IUserCustomService
     {
         Task<ApiResponse<User>> GetUserByFilter(UserFilter filter);
     }

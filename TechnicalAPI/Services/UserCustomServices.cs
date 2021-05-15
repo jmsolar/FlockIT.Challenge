@@ -7,7 +7,7 @@ using TechnicalAPI.Services.Interfaces;
 
 namespace TechnicalAPI.Services
 {
-    public class UserCustomServices : IUserCustomServices
+    public class UserCustomServices : IUserCustomService
     {
         private IUserRepository _userRepository;
 

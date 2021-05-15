@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Support.DTOs;
 using Support.Filters;
 using System;
@@ -11,9 +12,9 @@ namespace TechnicalAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IUserCustomServices _userService;
+        private IUserCustomService _userService;
 
-        public UserController(IUserCustomServices userService) {
+        public UserController(IUserCustomService userService) {
             _userService = userService;
         }
 
@@ -21,6 +22,8 @@ namespace TechnicalAPI.Controllers
         public async Task<IActionResult> Login(LoginRequest request) {
             try
             {
+                if (request == null) return BadRequest();
+
                 var userFilter = new UserFilter() { email = request.email, username = request.username };
 
                 var result = await _userService.GetUserByFilter(userFilter);
@@ -33,7 +36,7 @@ namespace TechnicalAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error on authentication");
             }
         }
     }

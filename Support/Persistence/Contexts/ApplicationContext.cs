@@ -13,7 +13,6 @@ namespace Support.Persistence.Contexts
 
         // Define tables names
         public DbSet<User> users;
-        public DbSet<State> states;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

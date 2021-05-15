@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Support.Persistence.Contexts;
 using Support.Persistence.Repositories.Impl;
 using Support.Persistence.Repositories.Interfaces;
-using Microsoft.OpenApi.Models;
-using TechnicalAPI.Services.Interfaces;
 using TechnicalAPI.Services;
+using TechnicalAPI.Services.Interfaces;
 
 namespace TechnicalAPI.Extensions
 {
@@ -41,10 +41,20 @@ namespace TechnicalAPI.Extensions
             });
         }
 
-        public static void AddCustomServices(this IServiceCollection services) {
-            services.AddTransient(typeof(IUserCustomServices), typeof(UserCustomServices));
-            services.AddTransient<IUserCustomServices, UserCustomServices>();
+        public static void AddCustomService(this IServiceCollection services) {
+            #region UserService
+            services.AddTransient(typeof(IUserCustomService), typeof(UserCustomServices));
+            services.AddTransient<IUserCustomService, UserCustomServices>();
+            #endregion
+
+            #region StateService
+            services.AddTransient(typeof(IStateService), typeof(StateService));
+            services.AddTransient<IStateService, StateService>();
+            #endregion
         }
 
+        public static void AddHttpClientService(this IServiceCollection services) {
+            services.AddHttpClient();
+        }
     }
 }
